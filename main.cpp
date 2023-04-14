@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main()
+void printMenu()
 {
   // 1 print help
   std::cout << "1: print help " << std::endl;
@@ -21,11 +21,19 @@ int main()
 
   std::cout << "============== " << std::endl;
   std::cout << "Type in 1-6" << std::endl;
+}
 
+int getUserOption()
+{
   int userOption;
+  std::cout << "Type 1-6" << std::endl;
   std::cin >> userOption;
-  std::cout << "you chose: " << userOption << std::endl;
+  std::cout << "You chose " << userOption << std::endl;
+  return userOption;
+}
 
+void processUserOption(int userOption)
+{
   if (userOption == 0) // bad input
   {
     std::cout << "Invalid choice. choose 1-6" << std::endl;
@@ -54,6 +62,16 @@ int main()
   {
     std::cout << "Going to next time frame" << std::endl;
   }
+}
+
+int main()
+{
+  while (true)
+  {
+    printMenu();
+    int userOption = getUserOption();
+    processUserOption(userOption);
+    }
 
   return 0;
 }

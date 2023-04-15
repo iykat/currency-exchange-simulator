@@ -152,8 +152,11 @@ int main()
   //   processUserOption(userOption);
   // }
 
-  OrderBookEntry order1{100, 0.01, "3/17/2020 17:01:25", "ETH/BTC", OrderBookType::ask};
-  std::cout << "the price is " << order1.price << std::endl;
+  std::vector<OrderBookEntry> orders;
+
+  orders.push_back(OrderBookEntry{2000, 0.01, "3/17/2020 17:01:25", "ETH/BTC", OrderBookType::ask});
+
+  std::cout << "the price is " << orders[0].price << std::endl;
 
   return 0;
 }

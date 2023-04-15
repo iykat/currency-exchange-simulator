@@ -4,6 +4,34 @@
 
 using namespace std;
 
+enum class OrderBookType
+{
+  bid,
+  ask
+};
+
+class OrderBookEntry
+{
+public:
+  OrderBookEntry(double _price,
+                 double _amount,
+                 std::string _timeStamp,
+                 std::string _product,
+                 OrderBookType _orderType)
+  {
+    price = _price;
+    amount = _amount;
+    timeStamp = _timeStamp;
+    product = _product;
+    orderType = _orderType;
+  }
+  double price;
+  double amount;
+  std::string timeStamp;
+  std::string product;
+  OrderBookType orderType;
+};
+
 void printMenu()
 {
   // 1 print help
@@ -94,12 +122,37 @@ void processUserOption(int userOption)
 
 int main()
 {
-  while (true)
-  {
-    printMenu();
-    int userOption = getUserOption();
-    processUserOption(userOption);
-  }
+
+  // double price = 5321.2003;
+  // double amount = 0.00002;
+  // std::string timestamp{"3/17/2020 17:01:25"};
+  // std::string product{""};
+
+  // OrderBookType orderType = OrderBookType::ask;
+
+  std::vector<OrderBookType> orderType;
+  std::vector<double> prices;
+  std::vector<double> amounts;
+  std::vector<std::string> products;
+  std::vector<std::string> timeStamps;
+
+  prices.push_back(20302.3);
+  amounts.push_back(0.01);
+  timeStamps.push_back("3/17/2020 17:01:25");
+  products.push_back("ETH/BTC");
+  orderType.push_back(OrderBookType::bid);
+
+  std::cout << "the price is " << prices[0] << std::endl;
+
+  // while (true)
+  // {
+  //   printMenu();
+  //   int userOption = getUserOption();
+  //   processUserOption(userOption);
+  // }
+
+  OrderBookEntry order1{100, 0.01, "3/17/2020 17:01:25", "ETH/BTC", OrderBookType::ask};
+  std::cout << "the price is " << order1.price << std::endl;
 
   return 0;
 }

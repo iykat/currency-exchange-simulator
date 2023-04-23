@@ -4,34 +4,6 @@
 
 using namespace std;
 
-enum class OrderBookType
-{
-  bid,
-  ask
-};
-
-class OrderBookEntry
-{
-public:
-  OrderBookEntry(double _price,
-                 double _amount,
-                 std::string _timestamp,
-                 std::string _product,
-                 OrderBookType _orderType)
-      : price(_price),
-        amount(_amount),
-        timestamp(_timestamp),
-        product(_product),
-        orderType(_orderType)
-
-  {
-  }
-  double price;
-  double amount;
-  std::string timestamp;
-  std::string product;
-  OrderBookType orderType;
-};
 
 void printMenu()
 {
@@ -124,13 +96,6 @@ void processUserOption(int userOption)
 int main()
 {
 
-  // double price = 5321.2003;
-  // double amount = 0.00002;
-  // std::string timestamp{"3/17/2020 17:01:25"};
-  // std::string product{""};
-
-  // OrderBookType orderType = OrderBookType::ask;
-
   std::vector<OrderBookType> orderType;
   std::vector<double> prices;
   std::vector<double> amounts;
@@ -144,13 +109,6 @@ int main()
   orderType.push_back(OrderBookType::bid);
 
   std::cout << "the price is " << prices[0] << std::endl;
-
-  // while (true)
-  // {
-  //   printMenu();
-  //   int userOption = getUserOption();
-  //   processUserOption(userOption);
-  // }
 
   std::vector<OrderBookEntry> orders;
 

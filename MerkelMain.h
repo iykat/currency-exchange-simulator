@@ -4,6 +4,7 @@ class MerkelMain
 {
 public:
   MerkelMain();
+  /** call this to start the sime*/
   void init();
   void printMenu();
   int getUserOption();

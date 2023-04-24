@@ -7,6 +7,13 @@ MerkelMain::MerkelMain()
 
 void MerkelMain::init()
 {
+  int input;
+  while (true)
+  {
+    printMenu();
+    input = getUserOption();
+    processUserOption(input);
+  }
 }
 void MerkelMain::printMenu()
 {

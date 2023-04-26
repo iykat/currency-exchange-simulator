@@ -6,6 +6,7 @@ public:
   MerkelMain();
   /** call this to start the sime*/
   void init();
+private:
   void printMenu();
   int getUserOption();
   void printHelp();

@@ -1,5 +1,5 @@
 # Currency-Exchange-Simulator 💱💹
-A crypto-trading platform written in C++ to develop object oriented programming and data handling skills.
+A crypto-trading platform simulator written in C++ to develop object oriented programming and data handling skills.
 
 After building this program, I have developed various C++ programming skills. Some of the things I learned include how to:
 

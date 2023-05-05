@@ -15,11 +15,16 @@ public:
   std::vector<OrderBookEntry> getOrders(OrderBookType type,
                                         std::string product,
                                         std::string timestamp);
-  
+  /** returns the earliest time in the orderbook*/
   std::string getEarliestTime();
 
-  static double getHighPrice(std::vector<OrderBookEntry>& orders);
-  static double getLowPrice(std::vector<OrderBookEntry>& orders);
+  /** return the next time after the sent time in the orderbook
+   * If there is not next timestamp, wraps around to the start
+   */
+  std::string getNextTime(std::string timestamp);
+
+  static double getHighPrice(std::vector<OrderBookEntry> &orders);
+  static double getLowPrice(std::vector<OrderBookEntry> &orders);
 
 private:
   std::vector<OrderBookEntry> orders;

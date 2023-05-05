@@ -21,5 +21,6 @@ private:
   void goToNextTimeFrame();
   void processUserOption(int userOption);
 
+  std::string currentTime;
   OrderBook orderBook{"data.csv"};
 };

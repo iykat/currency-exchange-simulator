@@ -107,7 +107,6 @@ void MerkelMain::enterAsk()
   {
     try
     {
-
       OrderBookEntry obe = CSVReader::stringsToOBE(
           tokens[1],
           tokens[2],

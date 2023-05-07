@@ -1,6 +1,7 @@
 #include "MerkelMain.h"
 #include <iostream>
 #include <vector>
+#include <limits>
 #include "OrderBookEntry.h"
 #include "CSVReader.h"
 
@@ -27,7 +28,7 @@ void MerkelMain::printMenu()
   // 2 print exchange stats
   std::cout << "2: print exchange stats " << std::endl;
   // 3 make an offer
-  std::cout << "3: make an offer " << std::endl;
+  std::cout << "3: make an ask " << std::endl;
   // 4 make a bid
   std::cout << "4: make a bid " << std::endl;
   // 5 print wallet
@@ -43,9 +44,19 @@ void MerkelMain::printMenu()
 
 int MerkelMain::getUserOption()
 {
-  int userOption;
-  // std::cout << "Type 1-6" << std::endl;
-  std::cin >> userOption;
+  int userOption = 0;
+  std::string line;
+  std::cout << "Type 1-6" << std::endl;
+  std::getline(std::cin, line);
+  try
+  {
+    /* code */
+    userOption = std::stoi(line);
+  }
+  catch (const std::exception &e)
+  {
+  }
+
   std::cout << "You chose " << userOption << std::endl;
   return userOption;
 }
@@ -81,9 +92,36 @@ void MerkelMain::printMarketStats()
   // std::cout << "OrderBook asks: " << asks << " bids:" << bids << std::endl;
 };
 
-void MerkelMain::enterOffer()
+void MerkelMain::enterAsk()
 {
-  std::cout << "Make an offer - enter the amount" << std::endl;
+  std::cout << "Make an ask - enter the amount: product,price,amount, eg: ETH/BTC,200,0.5" << std::endl;
+  std::string input;
+  std::getline(std::cin, input);
+
+  std::vector<std::string> tokens = CSVReader::tokenise(input, ',');
+  if (tokens.size() != 3)
+  {
+    std::cout << "Bad input! " << input << std::endl;
+  }
+  else
+  {
+    try
+    {
+
+      OrderBookEntry obe = CSVReader::stringsToOBE(
+          tokens[1],
+          tokens[2],
+          currentTime,
+          tokens[0],
+          OrderBookType::ask);
+    }
+    catch (const std::exception &e)
+    {
+      std::cout << "MerkelMain::enterAsk Bad input " << std::endl;
+    }
+  };
+
+  std::cout << "You typed: " << input << std::endl;
 }
 
 void MerkelMain::enterBid()
@@ -117,7 +155,7 @@ void MerkelMain::processUserOption(int userOption)
   }
   if (userOption == 3) // bad input
   {
-    enterOffer();
+    enterAsk();
   }
   if (userOption == 4) // bad input
   {

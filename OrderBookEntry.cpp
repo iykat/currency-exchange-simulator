@@ -22,7 +22,7 @@ OrderBookType OrderBookEntry::stringToOrderBookType(std::string s)
   {
     return OrderBookType::ask;
   }
-  if (s == "bid") 
+  if (s == "bid")
   {
     return OrderBookType::bid;
   }

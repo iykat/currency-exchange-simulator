@@ -17,6 +17,11 @@ public:
   /** checks if the wallet can cope with this ask or bid*/
   bool canFulfillOrder(OrderBookEntry order);
 
+  /** update the contents of the wallet
+   * assumes the order was made by the owner of the wallet
+   */
+  void processSale(OrderBookEntry &sale);
+
   /** generate a string representation of the wallet */
   std::string toString();
 

@@ -16,7 +16,7 @@ public:
                  double _amount,
                  std::string _timestamp,
                  std::string _product,
-                 OrderBookType _orderType
+                 OrderBookType _orderType,
                  std::string username = "dataset");
   static OrderBookType stringToOrderBookType(std::string s);
 

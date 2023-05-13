@@ -3,7 +3,7 @@
 #include <map>
 #include <algorithm>
 
-/** connstruct, reading a csv data file */
+/** construct, reading a csv data file */
 OrderBook::OrderBook(std::string filename)
 {
   orders = CSVReader::readCSV(filename);

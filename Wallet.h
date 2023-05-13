@@ -24,6 +24,7 @@ public:
 
   /** generate a string representation of the wallet */
   std::string toString();
+  friend std::ostream &operator<<(std::ostream &os, Wallet &wallet);
 
 private:
   std::map<std::string, double> currencies;
